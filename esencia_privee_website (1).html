@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESENCIA PRIVÉE - Fragancias de Lujo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-nav {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #D4AF37;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            color: #F4E99B;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #D4AF37;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1), transparent);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #D4AF37, #F4E99B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            color: #e8e8e8;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(231,76,60,0.3);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+
+        .promo-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .promo-price {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #D4AF37;
+            margin-bottom: 60px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #D4AF37;
+            box-shadow: 0 25px 50px rgba(212,175,55,0.2);
+        }
+
+        .product-image {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #D4AF37, #F4E99B);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 20px rgba(212,175,55,0.3);
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .product-description {
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #D4AF37, #F4E99B);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212,175,55,0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+        }
+
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 15px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cart-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #D4AF37;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(212,175,55,0.1);
+            border-radius: 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .contact-card h3 {
+            color: #D4AF37;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Order Form */
+        .order-form {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #D4AF37;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            background: #1a1a2e;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #D4AF37;
+            outline: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .whatsapp-float {
+                padding: 10px 15px !important;
+                font-size: 0.9rem !important;
+                height: 50px !important;
+            }
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            width: auto;
+            height: 60px;
+            padding: 15px 20px;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            z-index: 1500;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: whatsappPulse 2s infinite;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+            color: white;
+            text-decoration: none;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.8);
+                transform: scale(1.05);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo-nav">ESENCIA PRIVÉE</a>
+            <ul class="nav-links">
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ESENCIA PRIVÉE</h1>
+                <p class="tagline">Perfumes de Lujo</p>
+                
+                <div class="promo-banner">
+                    <h2>¡PROMOCIÓN ESPECIAL!</h2>
+                    <p style="font-size: 1.3rem;">TODAS LAS LOCIONES Y PERFUMES</p>
+                    <div class="promo-price">$1,499</div>
+                    <p style="font-size: 1.8rem; color: #D4AF37;">🎉 PROMOCIÓN 3 x 2 🎉</p>
+                    <p style="margin-top: 15px;">¡Llévate 3 fragancias por el precio de 2!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="productos">
+        <div class="container">
+            <h2 class="section-title">NUESTROS PRODUCTOS</h2>
+
+            <div class="products-grid" id="products-container">
+                <!-- Lociones Premium -->
+                <div class="product-card">
+                    <div class="product-image">🔮</div>
+                    <h3 class="product-title">Lociones Premium</h3>
+                    <p class="product-description">
+                        Colección de fragancias inspiradas en las mejores marcas de lujo. 
+                        Duración de hasta 8 horas con fórmula hidratante.
+                        <strong>¡Haz clic para ver el catálogo!</strong>
+                    </p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="openLocionesModal()">
+                        Ver Catálogo
+                    </button>
+                </div>
+
+                <!-- Perfumes Árabes -->
+                <div class="product-card">
+                    <div class="product-image">🏺</div>
+                    <h3 class="product-title">Perfumes Árabes</h3>
+                    <p class="product-description">
+                        Esencias orientales únicas y exóticas con tradición milenaria.
+                        Concentración superior para mayor duración.
+                        <strong>¡Haz clic para ver el catálogo completo!</strong>
+                    </p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="openArabesModal()">
+                        Ver Catálogo Árabes
+                    </button>
+                </div>
+
+                <!-- Pack Especial -->
+                <div class="product-card">
+                    <div class="product-image">🎁</div>
+                    <h3 class="product-title">Pack 3x2 Mixto</h3>
+                    <p class="product-description">
+                        Combina lociones y perfumes árabes.
+                        ¡Llévate 3 productos por el precio de 2!
+                        Perfecto para probar diferentes fragancias.
+                    </p>
+                    <div class="product-price">$2,999</div>
+                    <button class="btn" onclick="addToCart('Pack 3x2 Mixto', 2999)">
+                        ¡Oferta Especial!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="nosotros">
+        <div class="container">
+            <div class="about-content">
+                <h2 style="color: #D4AF37;">SOBRE ESENCIA PRIVÉE</h2>
+                <p>
+                    Somos una marca especializada en fragancias de lujo con experiencia 
+                    en el mercado de perfumes premium. Nos dedicamos a ofrecer lociones y perfumes árabes de la más alta calidad, 
+                    inspirados en las mejores casas de fragancias del mundo.
+                </p>
+                <p>
+                    Nuestro compromiso es brindar productos únicos y exclusivos que reflejen tu personalidad 
+                    y estilo. Cada fragancia es cuidadosamente seleccionada para garantizar durabilidad, 
+                    elegancia y sofisticación.
+                </p>
+                <p>
+                    <strong>✨ Calidad garantizada</strong> - Productos premium probados<br>
+                    <strong>🚚 Entregas coordinadas</strong> - Productos siempre disponibles<br>
+                    <strong>💎 Atención personalizada</strong> - Asesoría experta en fragancias
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <h2 class="section-title">CONTACTO</h2>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3 style="color: #D4AF37;">📱 WhatsApp</h3>
+                    <p>Contáctanos directamente para pedidos y consultas</p>
+                    <button class="btn btn-secondary" onclick="openWhatsApp()">
+                        Enviar WhatsApp
+                    </button>
+                </div>
+                
+                <div class="contact-card">
+                    <h3 style="color: #D4AF37;">🚚 Entregas</h3>
+                    <p>Entregas coordinadas</p>
+                    <p>Productos siempre disponibles</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3 style="color: #D4AF37;">✨ Calidad</h3>
+                    <p>Fragancias premium</p>
+                    <p>Satisfacción garantizada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="javascript:void(0)" class="whatsapp-float" id="whatsappFloat" onclick="openWhatsAppDirect()">
+        COMPRAR AHORA!
+    </a>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>🛒 Tu Carrito</h2>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">Total: $0</div>
+            <button class="btn" style="width: 100%; margin-bottom: 15px;" onclick="showOrderForm()">
+                Realizar Pedido
+            </button>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="clearCart()">
+                Vaciar Carrito
+            </button>
+            
+            <!-- Order Form -->
+            <div class="order-form" id="orderForm">
+                <h3 style="color: #D4AF37; margin-bottom: 20px;">Datos para tu Pedido</h3>
+                <form onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label>Nombre Completo *</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono/WhatsApp *</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección de Entrega</label>
+                        <textarea id="customerAddress" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Método de Pago</label>
+                        <select id="paymentMethod">
+                            <option value="transferencia">Transferencia</option>
+                            <option value="tarjeta">Tarjeta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comentarios Adicionales</label>
+                        <textarea id="orderComments" rows="2" placeholder="Especifica aromas preferidos, horario de entrega, etc."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">
+                        Confirmar Pedido via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Lociones Premium -->
+    <div class="cart-modal" id="locionesModal">
+        <div class="cart-content" style="max-width: 1000px; max-height: 90vh;">
+            <div class="cart-header">
+                <h2>🔮 CATÁLOGO DE LOCIONES PREMIUM</h2>
+                <button class="close-cart" onclick="closeLocionesModal()">×</button>
+            </div>
+            
+            <!-- Filtros dentro del modal -->
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button class="btn" onclick="filterLocionesModal('all')" id="filter-modal-all" style="margin: 5px;">Todas</button>
+                <button class="btn btn-secondary" onclick="filterLocionesModal('hombre')" id="filter-modal-hombre" style="margin: 5px;">Hombre</button>
+                <button class="btn btn-secondary" onclick="filterLocionesModal('mujer')" id="filter-modal-mujer" style="margin: 5px;">Mujer</button>
+                <button class="btn btn-secondary" onclick="filterLocionesModal('unisex')" id="filter-modal-unisex" style="margin: 5px;">Unisex</button>
+                <button class="btn btn-secondary" onclick="filterLocionesModal('arabe')" id="filter-modal-arabe" style="margin: 5px;">Árabes</button>
+            </div>
+
+            <div class="products-grid" id="lociones-container" style="max-height: 60vh; overflow-y: auto;">
+                <!-- FRAGANCIAS PARA HOMBRE -->
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🔥</div>
+                    <h3 class="product-title">Dior Sauvage</h3>
+                    <p class="product-description">Fragancia masculina intensa y fresca. Notas de bergamota y pimienta de Sichuan.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Dior Sauvage (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🌊</div>
+                    <h3 class="product-title">Acqua di Giò</h3>
+                    <p class="product-description">Frescura marina con notas acuáticas. Giorgio Armani - Elegancia mediterránea.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Acqua di Giò (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">👑</div>
+                    <h3 class="product-title">Gucci Guilty</h3>
+                    <p class="product-description">Fragancia audaz y provocativa. Mezcla perfecta de frescura y calidez.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Gucci Guilty (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🖤</div>
+                    <h3 class="product-title">Bleu de Chanel</h3>
+                    <p class="product-description">Sofisticación y elegancia francesa. Notas amaderadas y cítricas.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Bleu de Chanel (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🏇</div>
+                    <h3 class="product-title">Polo Ralph Lauren</h3>
+                    <p class="product-description">Clásico americano atemporal. Frescura deportiva y elegante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Polo Ralph Lauren (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🐊</div>
+                    <h3 class="product-title">Lacoste Vert</h3>
+                    <p class="product-description">Frescura deportiva francesa. Notas verdes y acuáticas.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Lacoste Vert (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">💎</div>
+                    <h3 class="product-title">Versace Eros</h3>
+                    <p class="product-description">Pasión y seducción italiana. Notas intensas y magnéticas.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Versace Eros (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🌙</div>
+                    <h3 class="product-title">Hugo Boss</h3>
+                    <p class="product-description">Elegancia alemana contemporánea. Fragancia versátil y sofisticada.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Hugo Boss (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="hombre" style="margin-bottom: 20px;">
+                    <div class="product-image">🌿</div>
+                    <h3 class="product-title">Creed Aventus</h3>
+                    <p class="product-description">La fragancia más codiciada. Masculinidad y distinción.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Creed Aventus (H)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <!-- FRAGANCIAS PARA MUJER -->
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">💜</div>
+                    <h3 class="product-title">Hugo Purple</h3>
+                    <p class="product-description">Fragancia femenina vibrante y moderna. Notas florales y frutales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Hugo Purple (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">🧸</div>
+                    <h3 class="product-title">Moschino Toy 2</h3>
+                    <p class="product-description">Dulzura y diversión italiana. Fragancia juguetona y encantadora.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Moschino Toy 2 (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">🌸</div>
+                    <h3 class="product-title">Givenchy Irresistible</h3>
+                    <p class="product-description">Elegancia parisina irresistible. Notas florales sofisticadas.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Givenchy Irresistible (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">🍃</div>
+                    <h3 class="product-title">Chanel Chance</h3>
+                    <p class="product-description">Sofisticación francesa atemporal. Fragancia fresca y elegante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Chanel Chance (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">👠</div>
+                    <h3 class="product-title">Carolina Herrera Good Girl</h3>
+                    <p class="product-description">Seducción y elegancia newyorkina. Fragancia dulce y sensual.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Good Girl (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">💖</div>
+                    <h3 class="product-title">Versace Bright Crystal</h3>
+                    <p class="product-description">Cristalina elegancia italiana. Notas florales y frutales brillantes.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Versace Bright Crystal (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">🌹</div>
+                    <h3 class="product-title">Dolce & Gabbana</h3>
+                    <p class="product-description">Pasión siciliana en cada esencia. Mezcla de tradición y modernidad.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Dolce & Gabbana (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="mujer" style="margin-bottom: 20px;">
+                    <div class="product-image">💙</div>
+                    <h3 class="product-title">Moschino Funny</h3>
+                    <p class="product-description">Diversión y originalidad italiana. Fragancia fresca y juvenil.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Moschino Funny (M)', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <!-- FRAGANCIAS PREMIUM LOUIS VUITTON -->
+                <div class="product-card" data-category="unisex" style="margin-bottom: 20px;">
+                    <div class="product-image">🏝️</div>
+                    <h3 class="product-title">Louis Vuitton Pacific Chill</h3>
+                    <p class="product-description">Lujo francés en fragancia unisex. Frescura oceánica premium.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('LV Pacific Chill', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="unisex" style="margin-bottom: 20px;">
+                    <div class="product-image">🌊</div>
+                    <h3 class="product-title">Louis Vuitton California Dream</h3>
+                    <p class="product-description">Sueño californiano de lujo. Fragancia unisex vibrante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('LV California Dream', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="unisex" style="margin-bottom: 20px;">
+                    <div class="product-image">✨</div>
+                    <h3 class="product-title">Louis Vuitton L'Immensité</h3>
+                    <p class="product-description">Inmensidad y elegancia francesa. Fragancia unisex sofisticada.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('LV L\'Immensité', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="unisex" style="margin-bottom: 20px;">
+                    <div class="product-image">🏺</div>
+                    <h3 class="product-title">1 Million</h3>
+                    <p class="product-description">Riqueza y opulencia en fragancia. Notas doradas y especiadas.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('1 Million', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <!-- FRAGANCIAS ÁRABES EN EL CATÁLOGO COMPLETO -->
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🏺</div>
+                    <h3 class="product-title">Bharara King</h3>
+                    <p class="product-description">Fragancia árabe de lujo con notas intensas y duraderas. Presentación premium en frasco elegante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Bharara King', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🌅</div>
+                    <h3 class="product-title">Odyssey Mega</h3>
+                    <p class="product-description">Esencia oriental vibrante y energética. Edición limitada con intensidad excepcional.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Odyssey Mega', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🏜️</div>
+                    <h3 class="product-title">Arabia Esperanto</h3>
+                    <p class="product-description">Fragancia árabe clásica con tradición milenaria. Mezcla sofisticada de especias orientales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Arabia Esperanto', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🌙</div>
+                    <h3 class="product-title">Bharara 3</h3>
+                    <p class="product-description">La tercera edición de la famosa línea Bharara. Intensidad y elegancia en cada gota.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Bharara 3', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🖤</div>
+                    <h3 class="product-title">Fragrance World</h3>
+                    <p class="product-description">Esencia árabe moderna con toques contemporáneos. Diseño minimalista y elegante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Fragrance World', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">👑</div>
+                    <h3 class="product-title">Oud Elite</h3>
+                    <p class="product-description">Prestigiosa fragancia con oud auténtico. Lujo árabe en su máxima expresión.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Oud Elite', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">💎</div>
+                    <h3 class="product-title">Jubilant Uno</h3>
+                    <p class="product-description">Fragancia árabe celebrativa con notas festivas. Perfecta para ocasiones especiales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Jubilant Uno', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🌟</div>
+                    <h3 class="product-title">Maison Alhambra</h3>
+                    <p class="product-description">Inspirada en la arquitectura árabe clásica. Fragancia sofisticada y atemporal.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Maison Alhambra', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🕌</div>
+                    <h3 class="product-title">Miraj Collection</h3>
+                    <p class="product-description">Colección exclusiva árabe con ingredientes selectos. Tradición y modernidad unidos.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Miraj Collection', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🔥</div>
+                    <h3 class="product-title">Odyssey Homme</h3>
+                    <p class="product-description">Fragancia árabe masculina intensa. Diseñada para el hombre moderno y sofisticado.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Odyssey Homme', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🌸</div>
+                    <h3 class="product-title">Crystal Mandarin</h3>
+                    <p class="product-description">Fragancia árabe con notas cítricas refrescantes. Energía oriental en cada aplicación.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Crystal Mandarin', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">💐</div>
+                    <h3 class="product-title">Rose Collection</h3>
+                    <p class="product-description">Esencia árabe floral con rosas damascenas. Elegancia femenina en cada nota.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Rose Collection', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">⚡</div>
+                    <h3 class="product-title">Asad Black</h3>
+                    <p class="product-description">Fragancia árabe misteriosa y seductora. Intensidad máxima para personalidades fuertes.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Asad Black', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">💙</div>
+                    <h3 class="product-title">Asad Blue</h3>
+                    <p class="product-description">Versión refrescante de la línea Asad. Frescura árabe con toques acuáticos.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Asad Blue', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🌺</div>
+                    <h3 class="product-title">Safa Collection</h3>
+                    <p class="product-description">Fragancia árabe delicada y refinada. Perfecta para el uso diario con elegancia.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Safa Collection', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🏺</div>
+                    <h3 class="product-title">Majestic Oud</h3>
+                    <p class="product-description">Oud premium con presentación de lujo. La esencia más preciada del Medio Oriente.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Majestic Oud', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🐍</div>
+                    <h3 class="product-title">Snake Perfume</h3>
+                    <p class="product-description">Fragancia árabe única y misteriosa. Diseño exclusivo con presentación llamativa.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Snake Perfume', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">📜</div>
+                    <h3 class="product-title">Heritage Blend</h3>
+                    <p class="product-description">Mezcla tradicional árabe con receta ancestral. Herencia olfativa de generaciones.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Heritage Blend', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="arabe" style="margin-bottom: 20px;">
+                    <div class="product-image">🌿</div>
+                    <h3 class="product-title">Afnan 9PM</h3>
+                    <p class="product-description">Fragancia árabe nocturna con elegancia masculina. Perfecta para ocasiones especiales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Afnan 9PM', 1499); closeLocionesModal();">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Perfumes Árabes -->
+    <div class="cart-modal" id="arabesModal">
+        <div class="cart-content" style="max-width: 1000px; max-height: 90vh;">
+            <div class="cart-header">
+                <h2>🏺 CATÁLOGO DE PERFUMES ÁRABES</h2>
+                <button class="close-cart" onclick="closeArabesModal()">×</button>
+            </div>
+
+            <div class="products-grid" style="max-height: 60vh; overflow-y: auto;">
+                <!-- FRAGANCIAS ÁRABES PREMIUM -->
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🏺</div>
+                    <h3 class="product-title">Bharara King</h3>
+                    <p class="product-description">Fragancia árabe de lujo con notas intensas y duraderas. Presentación premium en frasco elegante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Bharara King', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🌅</div>
+                    <h3 class="product-title">Odyssey Mega</h3>
+                    <p class="product-description">Esencia oriental vibrante y energética. Edición limitada con intensidad excepcional.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Odyssey Mega', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🏜️</div>
+                    <h3 class="product-title">Arabia Esperanto</h3>
+                    <p class="product-description">Fragancia árabe clásica con tradición milenaria. Mezcla sofisticada de especias orientales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Arabia Esperanto', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🌙</div>
+                    <h3 class="product-title">Bharara 3</h3>
+                    <p class="product-description">La tercera edición de la famosa línea Bharara. Intensidad y elegancia en cada gota.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Bharara 3', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🖤</div>
+                    <h3 class="product-title">Fragrance World</h3>
+                    <p class="product-description">Esencia árabe moderna con toques contemporáneos. Diseño minimalista y elegante.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Fragrance World', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">👑</div>
+                    <h3 class="product-title">Oud Elite</h3>
+                    <p class="product-description">Prestigiosa fragancia con oud auténtico. Lujo árabe en su máxima expresión.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Oud Elite', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">💎</div>
+                    <h3 class="product-title">Jubilant Uno</h3>
+                    <p class="product-description">Fragancia árabe celebrativa con notas festivas. Perfecta para ocasiones especiales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Jubilant Uno', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🌟</div>
+                    <h3 class="product-title">Maison Alhambra</h3>
+                    <p class="product-description">Inspirada en la arquitectura árabe clásica. Fragancia sofisticada y atemporal.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Maison Alhambra', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🕌</div>
+                    <h3 class="product-title">Miraj Collection</h3>
+                    <p class="product-description">Colección exclusiva árabe con ingredientes selectos. Tradición y modernidad unidos.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Miraj Collection', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🔥</div>
+                    <h3 class="product-title">Odyssey Homme</h3>
+                    <p class="product-description">Fragancia árabe masculina intensa. Diseñada para el hombre moderno y sofisticado.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Odyssey Homme', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🌸</div>
+                    <h3 class="product-title">Crystal Mandarin</h3>
+                    <p class="product-description">Fragancia árabe con notas cítricas refrescantes. Energía oriental en cada aplicación.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Crystal Mandarin', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">💐</div>
+                    <h3 class="product-title">Rose Collection</h3>
+                    <p class="product-description">Esencia árabe floral con rosas damascenas. Elegancia femenina en cada nota.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Rose Collection', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">⚡</div>
+                    <h3 class="product-title">Asad Black</h3>
+                    <p class="product-description">Fragancia árabe misteriosa y seductora. Intensidad máxima para personalidades fuertes.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Asad Black', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">💙</div>
+                    <h3 class="product-title">Asad Blue</h3>
+                    <p class="product-description">Versión refrescante de la línea Asad. Frescura árabe con toques acuáticos.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Asad Blue', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🌺</div>
+                    <h3 class="product-title">Safa Collection</h3>
+                    <p class="product-description">Fragancia árabe delicada y refinada. Perfecta para el uso diario con elegancia.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Safa Collection', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🏺</div>
+                    <h3 class="product-title">Majestic Oud</h3>
+                    <p class="product-description">Oud premium con presentación de lujo. La esencia más preciada del Medio Oriente.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Majestic Oud', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🐍</div>
+                    <h3 class="product-title">Snake Perfume</h3>
+                    <p class="product-description">Fragancia árabe única y misteriosa. Diseño exclusivo con presentación llamativa.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Snake Perfume', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">📜</div>
+                    <h3 class="product-title">Heritage Blend</h3>
+                    <p class="product-description">Mezcla tradicional árabe con receta ancestral. Herencia olfativa de generaciones.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Heritage Blend', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+
+                <div class="product-card" style="margin-bottom: 20px;">
+                    <div class="product-image">🌿</div>
+                    <h3 class="product-title">Afnan 9PM</h3>
+                    <p class="product-description">Fragancia árabe nocturna con elegancia masculina. Perfecta para ocasiones especiales.</p>
+                    <div class="product-price">$1,499</div>
+                    <button class="btn" onclick="addToCart('Afnan 9PM', 1499); closeArabesModal();">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let cartCount = 0;
+
+        function addToCart(productName, price) {
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            cartCount++;
+            updateCartDisplay();
+            alert(`✅ ${productName} agregado al carrito`);
+        }
+
+        function removeFromCart(index) {
+            const item = cart[index];
+            cartCount -= item.quantity;
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            document.getElementById('cartCount').textContent = cartCount;
+            
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666;">Tu carrito está vacío</p>';
+                cartTotal.textContent = 'Total: $0';
+                return;
+            }
+            
+            let total = 0;
+            let itemsHtml = '';
+            
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                
+                itemsHtml += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            ${item.price.toLocaleString()} x ${item.quantity}
+                        </div>
+                        <div>
+                            <strong>${subtotal.toLocaleString()}</strong>
+                            <button onclick="removeFromCart(${index})" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; margin-left: 10px; cursor: pointer;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = itemsHtml;
+            cartTotal.textContent = `Total: ${total.toLocaleString()}`;
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function clearCart() {
+            cart = [];
+            cartCount = 0;
+            updateCartDisplay();
+            document.getElementById('orderForm').style.display = 'none';
+        }
+
+        function showOrderForm() {
+            if (cart.length === 0) {
+                alert('❌ Tu carrito está vacío');
+                return;
+            }
+            document.getElementById('orderForm').style.display = 'block';
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('customerAddress').value;
+            const payment = document.getElementById('paymentMethod').value;
+            const comments = document.getElementById('orderComments').value;
+            
+            let orderText = `🛒 *NUEVO PEDIDO - ESENCIA PRIVÉE*\n\n`;
+            orderText += `👤 *Cliente:* ${name}\n`;
+            orderText += `📱 *Teléfono:* ${phone}\n`;
+            if (address) orderText += `📍 *Dirección:* ${address}\n`;
+            orderText += `💳 *Pago:* ${payment}\n\n`;
+            
+            orderText += `🛍️ *PRODUCTOS:*\n`;
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                orderText += `• ${item.name} x${item.quantity} = ${subtotal.toLocaleString()}\n`;
+            });
+            
+            orderText += `\n💰 *TOTAL: ${total.toLocaleString()}*\n`;
+            
+            if (comments) {
+                orderText += `\n📝 *Comentarios:* ${comments}\n`;
+            }
+            
+            orderText += `\n¡Gracias por elegir ESENCIA PRIVÉE! ✨`;
+            
+            const phoneNumber = "528112488040";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(orderText)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            clearCart();
+            toggleCart();
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('orderComments').value = '';
+        }
+
+        function openWhatsAppDirect() {
+            var phoneNumber = "528112488040";
+            var message = "Hola! Me interesa mas informacion sobre ESENCIA PRIVEE";
+            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function openWhatsApp() {
+            var phoneNumber = "528112488040";
+            var message = "Hola! Me interesa conocer mas sobre las fragancias de ESENCIA PRIVEE";
+            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function openLocionesModal() {
+            document.getElementById('locionesModal').style.display = 'block';
+        }
+
+        function closeLocionesModal() {
+            document.getElementById('locionesModal').style.display = 'none';
+        }
+
+        function openArabesModal() {
+            document.getElementById('arabesModal').style.display = 'block';
+        }
+
+        function closeArabesModal() {
+            document.getElementById('arabesModal').style.display = 'none';
+        }
+
+        function filterLocionesModal(category) {
+            const cards = document.querySelectorAll('#lociones-container .product-card');
+            const buttons = document.querySelectorAll('[id^="filter-modal-"]');
+            
+            buttons.forEach(btn => {
+                btn.className = 'btn btn-secondary';
+                btn.style.margin = '5px';
+            });
+            
+            document.getElementById('filter-modal-' + category).className = 'btn';
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.onclick = function(event) {
+            const cartModal = document.getElementById('cartModal');
+            const locionesModal = document.getElementById('locionesModal');
+            const arabesModal = document.getElementById('arabesModal');
+            
+            if (event.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+            if (event.target === locionesModal) {
+                locionesModal.style.display = 'none';
+            }
+            if (event.target === arabesModal) {
+                arabesModal.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // WhatsApp Float Button Animation
+        let lastScrollTop = 0;
+        const whatsappButton = document.getElementById('whatsappFloat');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                whatsappButton.style.transform = 'translateX(-10px) scale(0.9)';
+            } else {
+                // Scrolling up
+                whatsappButton.style.transform = 'translateX(0px) scale(1)';
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // Add bounce effect when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                whatsappButton.style.animation = 'whatsappPulse 2s infinite, bounceIn 1s ease-out';
+            }, 1000);
+        });
+    </script>
+
+    <style>
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+    </script>
+</body>
+</html>
